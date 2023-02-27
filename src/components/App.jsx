@@ -1,30 +1,27 @@
-// import { useEffect, useState } from 'react';
-// import { getUser } from '../API/githubAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateQuery } from '../redux/searchSlice';
+import { selectQuery } from 'redux/selectors';
 
 export const App = () => {
-  // const [query, setQuery] = useState('octocat');
-  // const [data, setData] = useState(null);
-  // const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   getUser(query);
-  // }, [query]);
+  function handleUpdate(evt) {
+    const query = evt.target.value;
+    console.log('CHANGED IN HANDLE UPDATE', query);
+    dispatch(updateQuery(query));
+  }
 
-  // function updateQuery(n) {
-  //   if (n) {
-  //     if (n.toLowerCase() !== query) {
-  //       setQuery(n.toLowerCase());
-  //     }
-  //   }
-  // }
+  const searchValue = useSelector(selectQuery);
 
   return (
     <div>
-      {/* <ul>
-        <li>Login: ${data.login}</li>
-        <li>Location : ${data.location}</li>
-        <li>Link : ${data.url}</li>
-      </ul> */}
+      <label htmlFor="search">Enter your query here</label>
+      <input
+        type="text"
+        name="search"
+        onChange={handleUpdate}
+        value={searchValue}
+      ></input>
     </div>
   );
 };
