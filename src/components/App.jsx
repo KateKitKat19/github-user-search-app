@@ -1,16 +1,31 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { updateQuery } from '../redux/searchSlice';
+import { updateQuery } from 'redux/searchSlice';
 import { selectQuery } from 'redux/selectors';
+import { useEffect } from 'react';
+import throttle from 'lodash.throttle';
+import { getUser } from 'API/githubAPI';
+import { setData } from 'redux/searchSlice';
 
 export const App = () => {
   const dispatch = useDispatch();
 
-  function handleUpdate(evt) {
+  //gets Octocat data (default) on the first render
+  useEffect(() => {
+    async function getDefaultData() {
+      const defaultData = await getUser('Octocat');
+      dispatch(setData(defaultData));
+    }
+    getDefaultData();
+  }, [dispatch]);
+
+  async function handleUpdate(evt) {
     const query = evt.target.value;
-    console.log('CHANGED IN HANDLE UPDATE', query);
     dispatch(updateQuery(query));
+    const newData = await getUser(query);
+    dispatch(setData(newData));
   }
 
+  const throttledFetchOnUpdate = throttle(handleUpdate, 500);
   const searchValue = useSelector(selectQuery);
 
   return (
@@ -19,7 +34,7 @@ export const App = () => {
       <input
         type="text"
         name="search"
-        onChange={handleUpdate}
+        onChange={throttledFetchOnUpdate}
         value={searchValue}
       ></input>
     </div>
