@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectData } from 'redux/selectors';
-
+import { UserImage } from './User.styled';
 export const UserBlock = () => {
   const userData = useSelector(selectData);
   console.log('userData in UserBlock', userData);
@@ -25,7 +25,7 @@ export const UserBlock = () => {
   return (
     <div>
       <div>
-        <img alt="user avatar" src={avatar_url}></img>
+        <UserImage alt="user avatar" src={avatar_url}></UserImage>
         <h3>{name ?? login}</h3>
         <p>@{login}</p>
         <p>Joined {created_at}</p>
@@ -67,5 +67,3 @@ export const UserBlock = () => {
     </div>
   );
 };
-
-//avatar_url, company, created_at, followers, following, location, bio, blog, twitter_username

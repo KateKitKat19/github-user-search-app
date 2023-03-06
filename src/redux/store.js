@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { searchReducer } from './searchSlice';
+import { themeReducer } from './themeSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -20,13 +21,14 @@ const middleware = [
   }),
 ];
 const persistConfig = {
-  key: 'search',
+  key: 'root',
   storage,
 };
 
 export const store = configureStore({
   reducer: {
     search: persistReducer(persistConfig, searchReducer),
+    theme: persistReducer(persistConfig, themeReducer),
   },
   middleware,
 });
