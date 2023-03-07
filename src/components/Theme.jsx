@@ -11,8 +11,8 @@ const lightTheme = {
   fonts: ['Space Mono', 'Roboto'],
   fontSizes: {
     small: '15px',
-    medium: '2em',
-    large: '3em',
+    medium: '22px',
+    large: '26px',
   },
 };
 
@@ -27,8 +27,8 @@ const darkTheme = {
   fonts: ['Space Mono', 'Roboto'],
   fontSizes: {
     small: '15px',
-    medium: '2em',
-    large: '3em',
+    medium: '22px',
+    large: '26px',
   },
 };
 

@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from 'components/Icons/theme-icons';
+import { MoonIcon, SunIcon } from 'components/Icons/ThemeIcons';
 import { selectTheme } from 'redux/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from 'redux/themeSlice';

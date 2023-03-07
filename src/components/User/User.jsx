@@ -3,7 +3,6 @@ import { selectData } from 'redux/selectors';
 import { UserImage } from './User.styled';
 export const UserBlock = () => {
   const userData = useSelector(selectData);
-  console.log('userData in UserBlock', userData);
   const {
     name,
     avatar_url,
