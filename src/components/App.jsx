@@ -10,6 +10,7 @@ import Theme from './Theme';
 
 export const App = () => {
   const error = useSelector(selectError);
+  console.log('App   error:', error);
   const theme = useSelector(selectTheme);
 
   return (
