@@ -1,6 +1,18 @@
 import { useSelector } from 'react-redux';
 import { selectData } from 'redux/selectors';
-import { UserImage } from './User.styled';
+import {
+  Wrapper,
+  InformationWrap,
+  UserImage,
+  Title,
+  InfoList,
+  Login,
+  Text,
+  Bio,
+  StatsList,
+  StatsItem,
+  StatsNumbers,
+} from './User.styled';
 export const UserBlock = () => {
   const userData = useSelector(selectData);
   const {
@@ -21,26 +33,32 @@ export const UserBlock = () => {
   const twitterBaseUrl = 'https://twitter.com/';
   const twitterUrl = `${twitterBaseUrl}${twitter_username}`;
 
+  const dateObj = new Date(created_at);
+  const options = { dateStyle: 'medium' };
+  const formattedDate = dateObj.toLocaleDateString('en-US', options);
+
   return (
-    <div>
-      <div>
+    <Wrapper>
+      <InformationWrap>
         <UserImage alt="user avatar" src={avatar_url}></UserImage>
-        <h3>{name ?? login}</h3>
-        <p>@{login}</p>
-        <p>Joined {created_at}</p>
-      </div>
-      <p>{bio ?? 'This profile has no bio'}</p>
-      <ul>
-        <li>
-          Repos <span>{public_repos}</span>
-        </li>
-        <li>
-          Followers <span>{followers}</span>
-        </li>
-        <li>
-          Following <span>{following}</span>
-        </li>
-      </ul>
+        <InfoList>
+          <Title>{name ?? login}</Title>
+          <Login>@{login}</Login>
+          <Text>Joined {formattedDate}</Text>
+        </InfoList>
+      </InformationWrap>
+      <Bio>{bio ?? 'This profile has no bio'}</Bio>
+      <StatsList>
+        <StatsItem>
+          Repos <StatsNumbers>{public_repos}</StatsNumbers>
+        </StatsItem>
+        <StatsItem>
+          Followers <StatsNumbers>{followers}</StatsNumbers>
+        </StatsItem>
+        <StatsItem>
+          Following <StatsNumbers>{following}</StatsNumbers>
+        </StatsItem>
+      </StatsList>
       <ul>
         <li>{location ?? 'Not Available'}</li>
         <li>
@@ -63,6 +81,6 @@ export const UserBlock = () => {
         </li>
         <li>{company ?? 'Not Available'}</li>
       </ul>
-    </div>
+    </Wrapper>
   );
 };
