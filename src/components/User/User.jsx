@@ -69,33 +69,35 @@ export const UserBlock = () => {
         </StatsItem>
       </StatsList>
       <AdditInfoList>
-        <AdditInfoItem>
+        <AdditInfoItem
+          style={{ opacity: location === null ? 0.5 : 1, gap: '19px' }}
+        >
           <LocationIcon />
-          {location ?? <span style={{ opacity: 0.5 }}>Not Available</span>}
+          {location ?? 'Not Available'}
         </AdditInfoItem>
-        <AdditInfoItem>
+        <AdditInfoItem style={{ opacity: blog === '' ? 0.5 : 1 }}>
           <WebsiteIcon />
-          {blog !== null ? (
+          {blog !== '' ? (
             <a href={blog} target="_blank" rel="noreferrer noopener">
               {blog}
             </a>
           ) : (
-            <span style={{ opacity: 0.5 }}>Not Available</span>
+            'Not Available'
           )}
         </AdditInfoItem>
-        <AdditInfoItem>
+        <AdditInfoItem style={{ opacity: twitter_username === null ? 0.5 : 1 }}>
           <TwitterIcon />
           {twitter_username !== null ? (
             <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
               @{twitter_username}
             </a>
           ) : (
-            <span style={{ opacity: 0.5 }}>Not Available</span>
+            'Not Available'
           )}
         </AdditInfoItem>
-        <AdditInfoItem>
+        <AdditInfoItem style={{ opacity: company === null ? 0.5 : 1 }}>
           <CompanyIcon />
-          {company ?? <span style={{ opacity: 0.5 }}>Not Available</span>}
+          {company ?? 'Not Available'}
         </AdditInfoItem>
       </AdditInfoList>
     </Wrapper>

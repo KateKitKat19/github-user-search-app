@@ -13,21 +13,22 @@ import { useEffect } from 'react';
 
 export const Searchbar = () => {
   const dispatch = useDispatch();
-
+  const searchValue = useSelector(selectQuery);
 
   useEffect(() => {
     async function getDefaultData() {
       const defaultData = await getUser('Octocat');
       dispatch(setData(defaultData));
     }
-    getDefaultData();
-  }, [dispatch]);
+    if (searchValue === '') {
+      getDefaultData();
+    }
+  }, [dispatch, searchValue]);
 
   function handleUpdate(evt) {
     const query = evt.target.value;
     dispatch(updateQuery(query));
   }
-  const searchValue = useSelector(selectQuery);
 
   async function handleSubmit(evt) {
     evt.preventDefault();

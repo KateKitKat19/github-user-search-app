@@ -4,6 +4,9 @@ import 'modern-normalize'; /* bring in normalize.css styles */
 
 export const GlobalStyle = createGlobalStyle`
 :root { 
+  height: 100%;
+
+  //Theme
   //colors
   --light-mode-blue: #0079FF;
   --light-mode-greyish: #697C9A;
@@ -24,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   width: 100%;
+  height: 100%;
   margin: 0;
   font-family: var(--main-font-style),
     sans-serif;
@@ -38,4 +42,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }`;
-

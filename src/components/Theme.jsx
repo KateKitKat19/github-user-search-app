@@ -7,6 +7,7 @@ const lightTheme = {
     regText: 'var(--light-mode-dark-blue)',
     linkText: 'var(--light-mode-blue)',
     title: 'var(--light-mode-title-color)',
+    stats: 'var(--light-mode-dark)',
   },
   fonts: ['Space Mono', 'Roboto'],
   fontSizes: {
@@ -23,6 +24,7 @@ const darkTheme = {
     regText: 'var(--dark-mode-white)',
     linkText: 'var(--dark-mode-blue)',
     title: 'var(--dark-mode-white)',
+    stats: 'var(--dark-mode-white)'
   },
   fonts: ['Space Mono', 'Roboto'],
   fontSizes: {

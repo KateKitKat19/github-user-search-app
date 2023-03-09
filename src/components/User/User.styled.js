@@ -4,19 +4,27 @@ export const UserImage = styled.img`
   display: block;
   border-radius: 50%;
   max-width: 70px;
+  @media screen and (min-width: 768px) {
+    max-width: 117px;
+  }
 `;
 
 export const Wrapper = styled.div`
   width: 100%;
   margin-top: 16px;
   padding: 32px 24px 48px;
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     max-width: 730px;
+    margin-top: 24px;
   }
   display: flex;
   flex-direction: column;
   background-color: ${props => props.theme.colors.mainBcg};
   border-radius: 15px;
+  box-shadow: ${props =>
+    props.theme.colors.mainBcg === 'var(--light-mode-white)'
+      ? '0px 16px 30px -10px rgba(70, 96, 187, 0.198567)'
+      : 'none'};
 `;
 
 export const InformationWrap = styled.div`
@@ -29,6 +37,9 @@ export const InformationWrap = styled.div`
 export const Title = styled.h3`
   margin: 0;
   font-size: 16px;
+  @media screen and (min-width: 768px) {
+    font-size: 26px;
+  }
   line-height: 1.5;
   color: ${props => props.theme.colors.title};
 `;
@@ -38,6 +49,9 @@ export const InfoList = styled.div``;
 export const Login = styled.p`
   margin: 0;
   font-size: 13px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
   line-height: 1.46;
   color: ${props => props.theme.colors.linkText};
 `;
@@ -46,6 +60,9 @@ export const Text = styled.p`
   margin: 0;
   margin-top: 6px;
   font-size: 13px;
+  @media screen and (min-width: 768px) {
+    font-size: 15px;
+  }
   line-height: 1.46;
   color: ${props => props.theme.colors.regText};
 `;
@@ -64,9 +81,12 @@ export const StatsList = styled.ul`
   margin-top: 32px;
   width: 100%;
   font-style: normal;
-  padding: 32px 10px;
+  padding: 18px 15px;
+  @media screen and (min-width: 768px) {
+    padding: 15px 32px;
+  }
   display: flex;
-  background-color: #141d2f;
+  background-color: ${props => props.theme.colors.background};
   border-radius: 10px;
 `;
 
@@ -75,17 +95,37 @@ export const StatsItem = styled.li`
   font-size: 13px;
   display: flex;
   flex-direction: column;
-  flex-basis: calc((100% - (2 * 1.5px)) / 3);
+  @media screen and (max-width: 767px) {
+    flex-basis: calc((100% - (2 * 1.5px)) / 3);
+  }
+  &:nth-child(2) {
+    @media screen and (min-width: 768px) {
+      margin-right: 82px;
+    }
+  }
+  &:first-child {
+    @media screen and (min-width: 768px) {
+      margin-right: 99px;
+    }
+  }
+
   align-items: center;
+  @media screen and (min-width: 768px) {
+    align-items: flex-start;
+  }
 `;
 
 export const StatsNumbers = styled.span`
   font-weight: 700;
   font-size: 16px;
   line-height: 1.5;
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+  }
+
   text-align: center;
   text-transform: uppercase;
-  color: #ffffff;
+  color: ${props => props.theme.colors.stats};
 `;
 
 export const AdditInfoList = styled.ul`
@@ -98,6 +138,11 @@ export const AdditInfoList = styled.ul`
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+  }
   list-style: none;
   font-size: 13px;
   line-height: 1.46;
@@ -107,8 +152,15 @@ export const AdditInfoList = styled.ul`
 export const AdditInfoItem = styled.li`
   display: flex;
   gap: 14px;
-  justify-content: center;
+  justify-content: flex-start;
   & > a {
     text-decoration: none;
+    color: ${props => props.theme.colors.linkText};
+  }
+  @media screen and (min-width: 768px) {
+    flex-basis: calc(100% / 2);
+    &:first-child {
+      margin-bottom: 15px;
+    }
   }
 `;
