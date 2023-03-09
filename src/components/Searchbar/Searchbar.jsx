@@ -2,11 +2,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setData, setError, updateQuery } from 'redux/searchSlice';
 import { selectQuery } from 'redux/selectors';
 import { getUser } from 'API/githubAPI';
-import { SearchbarStyled, Input, SearchBarIcon, Button } from './Searchbar.styled';
+import {
+  SearchbarStyled,
+  Input,
+  SearchBarIcon,
+  Button,
+} from './Searchbar.styled';
 import { SearchIcon } from 'components/Icons/SearchIcons';
+import { useEffect } from 'react';
 
 export const Searchbar = () => {
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    async function getDefaultData() {
+      const defaultData = await getUser('Octocat');
+      dispatch(setData(defaultData));
+    }
+    getDefaultData();
+  }, [dispatch]);
 
   function handleUpdate(evt) {
     const query = evt.target.value;

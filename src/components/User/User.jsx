@@ -12,7 +12,16 @@ import {
   StatsList,
   StatsItem,
   StatsNumbers,
+  AdditInfoList,
+  AdditInfoItem,
 } from './User.styled';
+import {
+  CompanyIcon,
+  LocationIcon,
+  TwitterIcon,
+  WebsiteIcon,
+} from 'components/Icons/UserInfoIcons';
+
 export const UserBlock = () => {
   const userData = useSelector(selectData);
   const {
@@ -59,28 +68,36 @@ export const UserBlock = () => {
           Following <StatsNumbers>{following}</StatsNumbers>
         </StatsItem>
       </StatsList>
-      <ul>
-        <li>{location ?? 'Not Available'}</li>
-        <li>
+      <AdditInfoList>
+        <AdditInfoItem>
+          <LocationIcon />
+          {location ?? <span style={{ opacity: 0.5 }}>Not Available</span>}
+        </AdditInfoItem>
+        <AdditInfoItem>
+          <WebsiteIcon />
           {blog !== null ? (
             <a href={blog} target="_blank" rel="noreferrer noopener">
               {blog}
             </a>
           ) : (
-            'Not Available'
+            <span style={{ opacity: 0.5 }}>Not Available</span>
           )}
-        </li>
-        <li>
+        </AdditInfoItem>
+        <AdditInfoItem>
+          <TwitterIcon />
           {twitter_username !== null ? (
             <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
               @{twitter_username}
             </a>
           ) : (
-            'Not Available'
+            <span style={{ opacity: 0.5 }}>Not Available</span>
           )}
-        </li>
-        <li>{company ?? 'Not Available'}</li>
-      </ul>
+        </AdditInfoItem>
+        <AdditInfoItem>
+          <CompanyIcon />
+          {company ?? <span style={{ opacity: 0.5 }}>Not Available</span>}
+        </AdditInfoItem>
+      </AdditInfoList>
     </Wrapper>
   );
 };

@@ -87,3 +87,28 @@ export const StatsNumbers = styled.span`
   text-transform: uppercase;
   color: #ffffff;
 `;
+
+export const AdditInfoList = styled.ul`
+  margin: 0;
+  padding: 0;
+  margin-top: 24px;
+  width: 100%;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.46;
+  color: ${props => props.theme.colors.regText};
+`;
+
+export const AdditInfoItem = styled.li`
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  & > a {
+    text-decoration: none;
+  }
+`;
