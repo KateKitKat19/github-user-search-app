@@ -85,12 +85,7 @@ export const UserBlock = () => {
         <AdditInfoItem style={{ opacity: blog === '' ? 0.5 : 1 }}>
           <WebsiteIcon />
           {blog !== '' ? (
-            <a
-              href={blog}
-              target="_blank"
-              rel="noreferrer noopener"
-              style={{ fontSize: blog.length >= 25 ? '10px' : '15px' }}
-            >
+            <a href={blog} target="_blank" rel="noreferrer noopener">
               {blog}
             </a>
           ) : (
