@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 768px) {
     max-width: 730px;
     margin-top: 24px;
+    padding: 48px;
   }
   display: flex;
   flex-direction: column;
@@ -32,6 +33,10 @@ export const InformationWrap = styled.div`
   gap: 20px;
   justify-content: flex-start;
   align-items: center;
+  @media screen and (min-width: 769px) {
+    gap: 37px;
+    align-items: flex-start;
+  }
 `;
 
 export const Title = styled.h3`
@@ -44,7 +49,14 @@ export const Title = styled.h3`
   color: ${props => props.theme.colors.title};
 `;
 
-export const InfoList = styled.div``;
+export const InfoList = styled.div`
+  @media screen and (min-width: 769px) {
+    width: 100%;
+    display: flex;
+  }
+`;
+
+export const StyledLoginWrap = styled.div``;
 
 export const Login = styled.p`
   margin: 0;
@@ -62,17 +74,29 @@ export const Text = styled.p`
   font-size: 13px;
   @media screen and (min-width: 768px) {
     font-size: 15px;
+    margin-left: auto;
   }
   line-height: 1.46;
   color: ${props => props.theme.colors.regText};
 `;
 
-export const Bio = styled.p`
+export const Bio = styled.div`
   margin: 0;
   margin-top: 24px;
   font-size: ${props => props.theme.colors.small};
   line-height: 1.67;
   color: ${props => props.theme.colors.regText};
+  @media screen and (min-width: 769px) {
+    width: 480px;
+    margin-left: auto;
+    margin-top: 0;
+    transform: translateY(-36px);
+    & > p {
+      margin: 0;
+
+      color: inherit;
+    }
+  }
 `;
 
 export const StatsList = styled.ul`
@@ -84,6 +108,11 @@ export const StatsList = styled.ul`
   padding: 18px 15px;
   @media screen and (min-width: 768px) {
     padding: 15px 32px;
+  }
+  @media screen and (min-width: 810px) {
+    margin-top: 0;
+    max-width: 480px;
+    margin-left: auto;
   }
   display: flex;
   background-color: ${props => props.theme.colors.background};
@@ -143,6 +172,11 @@ export const AdditInfoList = styled.ul`
     flex-wrap: wrap;
     gap: 0;
   }
+  @media screen and (min-width: 810px) {
+    margin-top: 37px;
+    max-width: 480px;
+    margin-left: auto;
+  }
   list-style: none;
   font-size: 13px;
   line-height: 1.46;
@@ -159,6 +193,7 @@ export const AdditInfoItem = styled.li`
   }
   @media screen and (min-width: 768px) {
     flex-basis: calc(100% / 2);
+    max-width: 240px;
     &:first-child {
       margin-bottom: 15px;
     }

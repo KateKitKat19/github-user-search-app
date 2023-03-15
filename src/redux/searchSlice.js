@@ -13,8 +13,8 @@ export const searchSlice = createSlice({
     updateQuery(state, action) {
       state.query = action.payload;
     },
-    setError(state, _) {
-      state.error = true;
+    setError(state, action) {
+      state.error = action.payload;
     },
     setData(state, action) {
       state.data = action.payload;

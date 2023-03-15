@@ -14,6 +14,7 @@ import {
   StatsNumbers,
   AdditInfoList,
   AdditInfoItem,
+  StyledLoginWrap,
 } from './User.styled';
 import {
   CompanyIcon,
@@ -51,12 +52,18 @@ export const UserBlock = () => {
       <InformationWrap>
         <UserImage alt="user avatar" src={avatar_url}></UserImage>
         <InfoList>
-          <Title>{name ?? login}</Title>
-          <Login>@{login}</Login>
+          <StyledLoginWrap>
+            <Title>{name ?? login}</Title>
+            <Login>@{login}</Login>
+          </StyledLoginWrap>
           <Text>Joined {formattedDate}</Text>
         </InfoList>
       </InformationWrap>
-      <Bio>{bio ?? 'This profile has no bio'}</Bio>
+      <Bio>
+        <p style={{ opacity: bio === null ? 0.5 : 1 }}>
+          {bio ?? 'This profile has no bio'}
+        </p>
+      </Bio>
       <StatsList>
         <StatsItem>
           Repos <StatsNumbers>{public_repos}</StatsNumbers>
@@ -78,7 +85,12 @@ export const UserBlock = () => {
         <AdditInfoItem style={{ opacity: blog === '' ? 0.5 : 1 }}>
           <WebsiteIcon />
           {blog !== '' ? (
-            <a href={blog} target="_blank" rel="noreferrer noopener">
+            <a
+              href={blog}
+              target="_blank"
+              rel="noreferrer noopener"
+              style={{ fontSize: blog.length >= 25 ? '10px' : '15px' }}
+            >
               {blog}
             </a>
           ) : (
